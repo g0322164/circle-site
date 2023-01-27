@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style-search_page.css' %}">
+        <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+        <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+        <title>検索結果</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src = "{% static 'js/search_page-script.js' %}"></script>
+        <script src = "{% static 'js/index.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+
+    <body>
+      <div class="w3-sidebar w3-green w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large w3-border-bottom" onclick="w3_close()">Close &times;</button>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-border-bottom">ホームページ</a>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-border-bottom">サークル一覧</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-border-bottom">ログイン</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-bottom">投稿</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-bottom">マイページ</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-bottom">お問い合わせ</a>
+      </div>
+        <div id = "home">
+          <!--ヘッダー部分-->
+          <div class="w3-teal w3-dark-grey">
+            <button class="w3-button w3-teal w3-xlarge w3-dark-grey" onclick="w3_open()">☰</button>
+            <!-- whole navbar area, bg-color -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">岩手大学サークル紹介</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'index' %}">ホーム <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'admin:index' %}">ログイン</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">追加・編集</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+
+          <div class = "container-fluid">
+            <div class = "row">
+              <!-- サイドバー -->
+              <!-- <div class="sidebar d-flex flex-column flex-shrink-0 p-1 col-1">
+                <hr>
+                <hr>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" aria-current="page">
+                      ホームページ
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link link-dark">
+                      サークル一覧
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link link-dark">
+                      ログイン
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link link-dark">
+                      追加・編集
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link link-dark">
+                      マイページ
+                    </a>
+                  </li>
+                </ul>
+                <hr>
+                
+              </div> -->
+      
+              <!--メイン-->
+              <div class = "col">
+                <!-- 検索 -->
+                <div class = "row">
+                  <div class = "col-4"></div>
+                  <div class = "list-search col-4">
+                    <form id = "form" action = "{% url 'search_page' %}" method = "">
+                      <input class = "search-box" id = "search-text" name = "keyword" type = "text" placeholder = "検索">
+                      <button type = "submit" class = "search-btn">
+                        <i class = "fa fa-search"></i>
+                      </button>
+                    </form>
+                  </div>
+                  <div class = "col-4"></div>
+                </div>
+                <!-- 検索結果 -->
+                <div class = "row search-result m-5 px-5">
+                  <p>検索結果</p>
+                </div>
+                <div class = "search-table m-5 p-5">
+                  <ul class="row list-group list-group-horizontal">
+                    {% for post in posts %}
+                      
+                      <li class="list-group-item m-3 p-0 col-2">
+                        <a href = "{% url 'club_detail' pk=post.pk %}">
+                          <img src = "{{post.image.url}}" alt = "写真">
+                          <p>{{ post.name }}</p>
+                        </a>
+                      </li>
+                      
+                    {% endfor %}
+                    <!-- <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/home.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                  </ul>
+                  <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0 col-2">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li> -->
+                  <!-- </ul>
+                  <ul class="list-group list-group-horizontal"> -->
+                    <!-- <li class="list-group-item m-3 p-0">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li>
+                    <li class="list-group-item m-3 p-0">
+                      <img src = "{% static 'images/slide3.jpg' %}" alt = "写真">
+                      <p>###########</p>
+                    </li> -->
+                  </ul>
+                  <!-- <div class="col-4"></div> -->
+
+                  <!--前，後ろのナビ-->
+                  <!-- <nav aria-label="Page navigation example" class = "">
+                    <ul class="pagination">
+                      <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                      <li class="page-item"><a class="page-link active" href="#" >1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+                    </ul>
+                  </nav> -->
+
+                  <!-- <div class = "col-4"></div> -->
+                </div>
+
+                <div class = "row">
+                  <div class = "back-button text-center">
+                    <a class="btn btn-primary px-5 m-5 btn-light" href = "../index.html">戻る</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer>
+            <div class = "footer-menu">
+              <a href = "#" class = "img-footer">
+                <img class = "logo" src = "{% static 'images/iwate_green.png' %}" alt = "岩手大学">
+              </a>
+              <div class = "footer-icon">
+                <a href = "#"><i class="fa-brands fa-twitter"></i></a>
+                <a href = "#"><i class="fa-brands fa-google"></i></a>
+                <a href = "#"><i class="fa-brands fa-facebook"></i></a>
+                <a href = "#"><i class="fa-brands fa-instagram"></i></a>
+              </div>
+            </div>
+          </footer>
+ 
+        </div>
+
+        <script>
+          function w3_open() {
+              document.getElementById("home").style.marginLeft = "25%";
+              document.getElementById("mySidebar").style.width = "25%";
+              document.getElementById("mySidebar").style.display = "block";
+              document.getElementById("openNav").style.display = 'none';
+          }
+          function w3_close() {
+              document.getElementById("home").style.marginLeft = "0%";
+              document.getElementById("mySidebar").style.display = "none";
+              document.getElementById("openNav").style.display = "inline-block";
+          }
+      </script>
+  
+  
+      </body>
+  </html>
+  
+  
+  
+  

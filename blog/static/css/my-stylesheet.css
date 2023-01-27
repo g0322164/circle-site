@@ -1,0 +1,817 @@
+/*背景画像*/
+body{
+    background : rgb(204, 221, 198);
+}
+
+#home{
+    background-image : url(./images/home3-2.jpg);
+    background-position-x : center;
+    background-size : cover;
+    background-repeat : no-repeat;
+    position : relative;
+}
+#home{
+    animation : bgchange 30s ease infinite;
+}
+@keyframes bgchange{
+    0%   {background-image : url(./images/home-2.jpg);}/*変化させたい色*/
+    30%  {background-image : url(./images/home2-2.jpg);}/*変化させたい色*/
+    60% {background-image : url(./images/home3-2.jpg);}
+    100% {background-image : url(./images/home-2.jpg);}
+}
+#home{
+    position : relative;
+    height : 100vh;
+}
+
+/*岩手大学のヘッダー*/
+.img-header{
+    position : absolute;/*絶対的な位置を指定するため*/
+    top : 150px;
+    left : 150px;
+    opacity : 1;
+    transition : 0.5s;
+}
+@media screen and (max-width: 959px){
+    .img-header{
+        top : 100px;
+        left : 100px;
+    }
+}
+.img-header .logo{
+    display : block;/*inlineだとサイズ調整できない*/
+    width : 30%;
+    min-width : 200px;
+    height : auto;
+}
+/* @media screen and (max-width: 959px){
+    .img-header .logo{
+        width : 300px;
+    }
+} */
+.img-header.panelactive{
+    opacity : 0;
+    transition : 0.8s;
+}
+/* .img_header .logo{
+    animation : bgchange_logo 10s ease infinite;
+}
+@keyframes bgchange_logo{
+    40%  {
+        opacity : 0;
+        display : none;
+    }
+    80%  {
+        opacity : 0;
+        display : none;
+    }
+    100% {display : block;}
+} */
+/* .img_header_green{
+    position : absolute;
+    top : 100px;
+    left : 100px;
+}
+.img_header_green .green{
+    width : 500px;
+    height : auto;
+}
+.img_header_green .green{
+    animation : bgchange_green 10s ease infinite;
+}
+@keyframes bgchange_green{
+    0%{
+        display : none;
+        opacity : 0;
+    }
+    40%{
+        display : block;
+    }
+    80%{
+        display : none;
+        opacity : 0;
+    }
+
+} */
+
+
+/*ヘッダータグ(検索，ログイン)*/
+/*検索*/
+.search-menu{
+    position : absolute;
+    left : 50%;
+    top : 45%;
+    transform : translate(-50%, -45%);
+    text-align : center;
+    /* background : rgb(192, 192, 192, 0.8); */
+    border-radius : 40px;
+    opacity : 1;
+    transition : 0.5s;
+    width : 80%;
+}
+.serach-form{
+}
+.open-btn{
+    margin : 30px;
+    display : inline-block;
+}
+.open-btn i{
+    opacity : 1;
+    transition : 0.5s;
+    font-size : 7em;
+    color : silver;
+    margin : 30px;
+    cursor: pointer;
+    text-shadow : 5px 5px 5px gray;
+}
+@media screen and (max-width: 959px){
+    .open-btn i{
+        font-size : 5em;
+    }
+}
+@media screen and (max-width: 480px){
+    .open-btn i{
+        font-size : 2em;
+    }
+}
+.open-btn i:hover{
+    color : black;
+}
+.search_menu.panelactive{
+    opacity : 0;
+    transition : 0.8s;
+}
+
+
+/*検索欄の文字*/
+.search-menu .ja{
+    display : inline-block;
+    font-size : 4em;
+    font-weight : bold;
+    color : silver;
+    text-shadow : 5px 5px 5px gray;
+}
+@media screen and (max-width: 959px){
+    .search-menu .ja{
+        font-size : 2.5em;
+    }
+}
+@media screen and (max-width: 480px){
+    .search-menu .ja{
+        font-size : 1.5em;
+    }
+}
+.search-menu .eng{
+    font-size : 3em;
+    font-weight : bold;
+    color : silver;
+    text-shadow : 3px 3px 3px gray;
+}
+@media screen and (max-width: 959px){
+    .search-menu .eng{
+        font-size : 2em;
+    }
+}
+@media screen and (max-width: 480px){
+    .search-menu .eng{
+        font-size : 1em;
+    }
+}
+
+/*検索窓(展開)*/
+/*検索窓の背景*/
+#search-wrap{
+    position : fixed;
+    top : 10%;
+    left : 5%;
+    z-index : -1;
+    opacity : 0;
+    transition : all 0.4s;
+    width : 90%;
+    height : 80vh;
+    border-radius : 40px;
+}
+#search-wrap.panelactive{
+    opacity : 0.8;
+    z-index : 3;
+    /* display : flex; */
+    display : relative;
+    justify-content : center;
+    align-items : center;
+    background : #fff;
+}
+
+/*検索窓タイトル*/
+.search-guide{
+    position : absolute;
+    top : 20%;
+    left : 50%;
+    transform : translateX(-50%);
+    width : 50%;
+    text-align : center;
+}
+.search-guide p{
+    font-size : 3em;
+    font-weight : bold;
+    color : green;
+}
+@media screen and (max-width: 959px){
+    .search-guide p{
+        font-size : 1.8em;
+    }
+}
+@media screen and (max-width: 480px){
+    .search-guide p{
+        font-size : 1em;
+    }
+}
+/*検索窓分類*/
+.search-category{
+    position : absolute;
+    bottom : 10%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    width : 50%;
+    text-align : center;
+}
+@media screen and (max-width: 959px){
+    .search-category{
+        transform : translate(-50%,-50%);
+    }
+}
+.search-category a{
+    display : inline-block;
+    padding : 5px 20px;
+    margin : 10px 30px;
+    font-size : 2em;
+    text-decoration : none;
+    color : white;
+    border-radius : 40px;;
+    background : green;
+}
+@media screen and (max-width: 959px){
+    .search-category a{
+        font-size : 1.5em;
+        padding : 2px 10px;
+        margin : 5px 5px;
+    }
+}
+
+/*検索窓*/
+#search-wrap .search-area{
+    display : none;
+}
+#search-wrap.panelactive .search-area{
+    display : block;
+    width : 60%;
+    position : absolute;
+    top : 40%;
+    left : 50%;
+    transform : translateX(-50%);
+}
+
+/*検索フォーム*/
+#search-wrap .search-area form{
+    position : relative;
+    height : 66px;
+}
+
+#search-wrap .search-area form input{
+    -webkit-appearance:none;
+    outline : none;
+    color : #fff;
+}
+#search-wrap .search-area form input[type = "text"]{
+    width : 100%;
+    padding : 20px;
+    border : none;
+    border-bottom : 2px solid #666;
+    transition : all 0.5s;
+    letter-spacing : 0.05em;
+    cursor : text;
+}
+@media screen and (max-width: 959px){
+    #search-wrap .search-area form input[type = "text"]{
+        height : 40px;
+    }
+}
+#search-wrap .search-area form input[type = "text"]:focus{
+    background : #444;
+}
+#search-wrap .search-area form input[type = "submit"]{
+    position : absolute;
+    top : 0;
+    right : 10px;
+    background : url("./images/icon_search.svg") no-repeat 15px center;
+    background-size : 25px 25px;
+    width : 60px;
+    height : 60px;
+    border : none;
+}
+@media screen and (max-width: 959px){
+    #search-wrap .search-area form input[type = "submit"]{
+        height : 40px;
+    }
+}
+
+/*×ボタン*/
+.close-btn{
+    position : absolute;
+    top : 10px;
+    right : 10px;
+    z-index : 2;
+    cursor : pointer;
+    width : 60px;
+    height : 60px;
+}
+.close-btn span{
+    display : inline-block;
+    position : absolute;
+    left : 14px;
+    height : 3px;
+    border-radius : 2px;
+    background-color : #333;
+}
+.close-btn span:nth-of-type(1) {
+    top: 21px;
+    left: 16px;
+    transform: translateY(6px) rotate(-135deg);
+    width: 50%;
+}
+.close-btn span:nth-of-type(2){
+    top: 32px;
+    left: 16px;
+    transform: translateY(-6px) rotate(135deg);
+    width: 50%;
+}
+
+
+/*サークル一覧*/
+.circle-arrow{
+    position : absolute;
+    bottom : 5%;
+    left : 50%;
+    transform : translateX(-50%);
+    text-align : center;
+    opacity : 1;
+    transition : 0.5s;
+}
+.circle-arrow p{
+    color : silver;;
+    font-size : 3em;
+    margin : 0;
+    text-shadow : 3px 3px 3px gray;
+}
+@media screen and (max-width: 959px){
+    .circle-arrow p{
+        font-size : 2.0em;
+    }
+}
+.circle-arrow a{
+    color : silver;
+    font-size : 4em;
+    text-shadow : 3px 3px 3px gray;
+}
+@media screen and (max-width: 959px){
+    .circle-arrow a{
+        font-size : 2.5em;
+    }
+}
+.circle-arrow a:hover{
+    color : black;
+}
+.circle-arrow.panelactive{
+    opacity : 0;
+    transition : 0.8s;
+}
+
+
+
+
+/*list*/
+
+#list{
+    width : 100%;
+    height : auto;
+    text-align : center;
+    position : relative;
+    padding-bottom : 120px;
+    box-sizing : border-box;
+}
+
+/*ホームに戻る*/
+.home-arrow{
+
+}
+.home-arrow a{
+    color : green;
+    font-size : 2em;
+}
+
+/*スライドショー*/
+.slider{
+    width : 80%;
+    margin : 50px auto;
+}
+.slider img{
+    width : 100%;
+    height : auto;
+}
+.slider .slick-slide{
+    margin : 10px 10px;
+}
+
+/* .slick-prev,
+.slick-next{
+    position : absolute;
+    top : 42%;
+    cursor : pointer;
+    outline : none;
+    border-top : 2px solid #666;
+    border-right : 2px solid #666;
+    height : 15px;
+    width : 15px;
+} */
+/* .slick-prev{
+    left : -1.5%;
+    transform : rotate(-135deg);
+}
+.slick-next{
+    right : -1.5%;
+    transform : rotate(45deg);
+}
+
+.slick-dots{
+    text-align : center;
+    margin : 20px 0 0 0;
+}
+.slick-dots li{
+    display : inline-block;
+    margin : 0 5px;
+}
+.slick-dots button{
+    color : transparent;
+    outline : none;
+    width : 5px;
+    height : 5px;
+    display : block;
+    border-radius : 50%;
+    background : #ccc;
+}
+.slick-dots .slick-active button{
+    background : #333;
+} */
+
+/* サークル一覧検索 */
+.list-search{
+    padding : 20px;
+}
+/*
+.list-search .search-box{
+    height : 50px;
+    padding : 0 10px;
+    position : absolute;
+    left : 0;
+    top : 0;
+    border-radius : 2px;
+    outline : 0;
+    background : #eee;
+}
+.list-search .search-btn{
+    height : 50px;
+    position : absolute;
+    left : 255px;
+    top : 0;
+    background : none;
+    font-size : 20px;
+} */
+.list-search form{
+    position : relative;
+    left : 50%;
+    transform : translate(-50%);
+    width : 500px;
+    text-align : center;
+}
+.list-search .search-box{
+    height : 50px;
+    width : 100%;
+    background : #eee;
+    border : none;
+    border-radius : 10px;
+    outline : 0;
+}
+.list-search .search-btn{
+    border : none;
+    background : #eee;
+    height : 50px;
+    position : absolute;
+    right : 0;
+    padding : 0 10px;
+    border-radius : 10px;
+    font-size : 20px;
+}
+
+/* タブメニュー */
+.tab-menu{
+    width : 60%;
+    padding-top : 30px;
+    padding-bottom : 1em;
+    border : 1px solid green;
+    border-top : none;
+    border-left : none;
+    border-right : none;
+    margin : 0 auto;
+}
+.tab-item{
+    width : calc(100%/3);
+    padding : 15px 0;
+    border-bottom : 3px solid green;
+    background : rgb(230, 238, 227);
+    text-align : center;
+    color : green;
+    display : block;
+    float : left;
+    text-align : center;
+    font-weight : bold;
+    transition : all 0.2s ease;
+    font-size : 1.5em;
+}
+.tab-item:hover{
+    opacity : 0.75;
+}
+input[name = "tab-item"]{
+    display : none;/*ラジオボタンを消す*/
+}
+
+.tab-content{
+    display : none;
+    padding : 0;
+    clear : both;
+    overflow : hidden;
+    width : 100%;
+}
+
+#sports:checked ~ #sports-content,/*id"sports"の同階層の後に続くid"sports-content"に適用*/
+#culture:checked ~ #culture-content,
+#club:checked ~ #club-content{
+    display : block;
+}
+
+.tab-menu input:checked + .tab-item/*「+」同じ階層のすぐ後の一つの要素のみ適用*/{
+    background : green;
+    color : rgb(230, 238, 227);
+}
+
+.sports-description,
+.culture-description,
+.club-description{
+    font-size : 1.5em;
+    width : 100%;
+}
+
+.sports-description ul,
+.culture-description ul,
+.club-description ul{
+    padding : 0;
+    width : 100%;
+}
+
+.sports-description ul li,
+.culture-description ul li,
+.club-description ul li{
+    margin : 10px auto;
+    padding : 0;
+    list-style : none;
+    width : 100%;
+    height : 250px;
+    text-align : left;
+    position : relative;
+}
+
+.sports-description ul li + li,
+.culture-description ul li + li,
+.club-description ul li + li{
+    border-top : 1px solid green;
+}
+.sports-description ul li a, 
+.culture-description ul li a, 
+.club-description ul li a{
+    color:inherit;
+    text-decoration: none;
+}
+
+.sports-description ul li img, 
+.culture-description ul li img, 
+.club-description ul li img{
+    display : inline-block;
+    width : 30%;
+    margin : 10px;
+    margin-right : 20px;
+    border-radius : 10px;
+}
+
+.culture-image{
+    display : inline-block;
+    width : 30%;
+    margin : 10px;
+    margin-right : 20px;
+    border-radius : 10px;
+}
+
+.sports-description ul li .description, 
+.culture-description ul li .description, 
+.club-description ul li .description{
+    display : inline-block;
+    width : 50%;
+    vertical-align : top;
+}
+.sports-description ul li .description p, 
+.culture-description ul li .description p, 
+.club-description ul li .description p{
+    font-size : 0.6em;
+    margin : 0;
+}
+@media screen and (max-width: 959px){
+    .sports-description ul li .description p, 
+    .culture-description ul li .description p, 
+    .club-description ul li .description p{
+        font-size : 0.4em;
+    }
+}
+.sports-description ul li .description .circle, 
+.culture-description ul li .description .circle, 
+.club-description ul li .description .circle{
+    font-size : 1.0em;
+    font-weight : bold;
+}
+@media screen and (max-width: 959px){
+    .sports-description ul li .description .circle, 
+    .culture-description ul li .description .circle, 
+    .club-description ul li .description .circle{
+        font-size : 0.6em;
+    }
+}
+.sports-description ul li .description i, 
+.culture-description ul li .description i, 
+.club-description ul li .description i{
+    display : inline;
+    font-size : 0.6em;
+}
+@media screen and (max-width: 959px){
+    .sports-description ul li .description i, 
+    .culture-description ul li .description i, 
+    .club-description ul li .description i{
+        font-size : 0.4em;
+    }
+}
+.sports-description ul li .description .num, 
+.culture-description ul li .description .num, 
+.club-description ul li .description .num{
+    display : inline;
+}
+.sports-description ul li .description .tag p, 
+.culture-description ul li .description .tag p, 
+.club-description ul li .description .tag p{
+    display : inline;
+    background : green;
+    border-radius : 5px;
+    color : #fff;
+    padding : 5px 10px;
+}
+.sports-description ul li .description .place, 
+.culture-description ul li .description .place, 
+.club-description ul li .description .place{
+    padding : 0;
+}
+.sports-description ul li .description .place p, 
+.culture-description ul li .description .place p, 
+.club-description ul li .description .place p{
+    display : inline-block;
+}
+.sports-description ul li .description .time, 
+.culture-description ul li .description .time, 
+.club-description ul li .description .time{
+    padding : 0;
+}
+.sports-description ul li .description .time p, 
+.culture-description ul li .description .time p, 
+.club-description ul li .description .time p{
+    display : inline-block;
+}
+.sports-description ul li .money, 
+.culture-description ul li .money, 
+.club-description ul li .money{
+    display : inline-block;
+    width : 10%;
+    vertical-align : top;
+    text-align : right;
+}
+.sports-description ul li .money p, 
+.culture-description ul li .money p, 
+.club-description ul li .money p{
+    font-size : 0.8em;
+    width : 100%;
+}
+.sports-description ul li a, 
+.culture-description ul li a, 
+.club-description ul li a{
+    position : absolute;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+}
+.sports-pagination ul, .culture-pagination ul, .club-pagination ul{
+    margin-left : 40%;
+}
+
+/* .sports-description .circle-description{
+    text-decoration : none;
+    color : inherit;
+    height : 100%;
+    width : 100%;
+    text-align : left;
+    margin : 10px 0;
+    padding : 0;
+}
+.sports-description .circle-description img{
+    height : 90%;
+    width : auto;
+    border-radius : 10px;
+    display : inline-block;
+}
+.sports-description .circle-description .description{
+    display : inline-block;
+    text-align : left;
+    width : 50%;
+}
+.sports-description .circle-description .description p{
+    font-size : 0.2em;
+    margin : 3px;
+}
+.sports-description .circle-description .money{
+    display : inline-block;
+    width : 18%;
+} */
+
+/* .tab-menu{
+    position : absolute;
+    top : 60%;
+    left : 50%;
+    transform : translateX(-50%);
+}
+.tab{
+    display : flex;
+    flex-wrap : wrap;
+    list-style : none;
+}
+.tab li a{
+    display : block;
+    background : #DDD;
+    margin : 0 2px;
+    padding : 10px 20px;
+}
+.tab li.active a{
+    background : #fff;
+}
+
+.area{
+    display : none;
+    opacity : 0;
+    background : #fff;
+    padding : 50px 20px;
+}
+.area.is-active{
+    display : block;
+} */
+
+/*フッター*/
+footer{
+    position : absolute;
+    bottom : 0;
+    width : 100%;
+    height : 120px;
+    background : #fff;
+    color : green;
+    text-align : center;
+}
+.footer-menu{
+    position : relative;
+}
+footer a img{
+    width : auto;
+    height : 80px;
+    margin : 20px;
+}
+.footer-icon{
+    position : absolute;
+    right : 0;
+    bottom : 0;
+    margin : 15px;
+}
+.footer-icon a i{
+    color : black;
+    font-size : 1.2em;
+    padding : 5px;
+
+}

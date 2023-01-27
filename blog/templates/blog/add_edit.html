@@ -1,0 +1,262 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style-add_edit.css' %}">
+        <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+        <title>追加・編集</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src = "{% static 'js/add_edit-script.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+
+    <body>
+      <div id = "home">
+        <!--ヘッダー部分-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">岩手大学サークル紹介</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-1">
+                  <a class="nav-link" href="{% url 'index' %}">ホーム</a>
+                </li>
+                <li class="nav-item mx-1">
+                  <a class="nav-link" href="#">ログイン</a>
+                </li>
+                <li class="nav-item mx-1">
+                  <a class="nav-link active" href="add_edit.html">追加・編集</a>
+                </li>
+                <!--ドロップダウン-->
+                <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    メニュー
+                  </a>
+                  <ul>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </div>
+                </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ログイン</a>
+                </li> -->
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+              </form>
+            </div>
+        </nav>
+
+        <!--メイン-->
+        <form method = "post" action ="../index.html">
+        <div class = "container-fluid">
+          <!--基本情報-->
+          <div class = "row">
+            <div class = "col-8 base-input p-3">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="inputname" class="form-label">サークル名</label>
+                  <input type="text" name = "" class="form-control" id="inputName" required>
+                </div>
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <label for="inputnumber" class="form-label">部員数</label>
+                  <input type="number" name = "" class="form-control" id="inputNumber">
+                </div>
+                <div class="col-md-2">
+                  <label for="inputperiod" class="form-label">部費</label>
+                  <input type="text" name = "" class="form-control" id="inputPeriod" placeholder="例) 半年">
+                </div>
+                <div class="col-md-4">
+                  <label for="inputmoney" class="form-label">　</label>
+                  <input type="number" name = "" class="form-control" id="inputMoney" placeholder="例) 3000">
+                </div>
+                <div class="col-md-8">
+                  <label for="inputplace" class="form-label">活動場所</label>
+                  <input type="text" name = "" class="form-control" id="inputPlace">
+                </div>
+                <div class="col-md-8">
+                  <label for="inputtime" class="form-label">活動頻度・時間</label>
+                  <input type="text" name = "" class="form-control" id="inputTime">
+                </div>
+
+                <!-- <div class="col-md-4">
+                  <label for="inputMonth" class="form-label">期間</label>
+                  <select id="inputMonth" class="form-select">
+                    <option selected>選択</option>
+                    <option>一か月</option>
+                    <option>二か月</option>
+                    <option>半年</option>
+                    <option>一年</option>
+                  </select>
+                </div> -->
+
+              </div>
+            </div>
+            <div class = "col-1">
+
+            </div>
+
+            <!--画像-->
+            <div class = "col-3 image-input">
+              <form method = "post" enctype="multipart/form-data">
+                <input type = "file" id = "inputImage" name = "circle-image" accept = "image/*">
+                <div id = "preview"></div>
+              </form>
+            </div>
+          </div>
+
+          <!--連絡方法-->
+          <div class = "row my-3">
+            <div class = "col-12 base-input p-3">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="inputaddres" class="form-label">連絡方法(Eメール)</label>
+                  <input type="email" name = "" class="form-control" id="inputAddress">
+                </div>
+                <div class="col-md-3">
+                  <label for="inputtwitter" class="form-label">連絡方法(Twitter)</label>
+                  <input type="url" name = "" class="form-control" id="inputTwitter" placeholder="URL">
+                </div>
+                <div class="col-md-3">
+                  <label for="inputinstagram" class="form-label">連絡方法(Instagram)</label>
+                  <input type="url" name = "" class="form-control" id="inputInstagram" placeholder="URL">
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--カテゴリ-->
+          <div class = "row">
+            <div class = "col-12 base-input p-4">
+              <div class="row g-3">
+              <div class="col-md-3">
+                <select class="form-select" aria-label="Default select example" required>
+
+                  <option selected>カテゴリを選んでください</option>
+                  <option value="1">運動系</option>
+                  <option value="2">文化系</option>
+                  <option value="3">同好会</option>
+                </select>
+              </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--タグ-->
+          <div class = "row my-3">
+            <div class = "col-12 base-input p-3">
+              <div class="row g-3">
+                <div class = "circle-tag">
+                  <p>タグを選んでください(複数回答可)</p>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox1">初心者歓迎</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox2">留学生歓迎</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option2">
+                    <label class="form-check-label" for="inlineCheckbox3">室内競技</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option3">
+                    <label class="form-check-label" for="inlineCheckbox4">屋外競技</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox5">球技</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox6">音楽系</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox7">ボランティア</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox8">研究会</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox9">趣味</label>
+                  </div>
+                  <div class="form-check form-check-inline mx-3">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option1">
+                    <label class="form-check-label" for="inlineCheckbox10">その他</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class = "row my-3">
+            <div class = "col-12 base-input p-3">
+              <div class="row g-3 mx-3">
+                <label for="exampleFormControlTextarea1" class="form-label">一言(100文字以内)</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class = "row my-5">
+            <div class = "back-button col-4 text-center">
+              <a class="btn btn-primary px-5 btn-light" href = "../index.html">戻る</a>
+            </div>
+            <div class = "add-button col-4 text-center">
+              <button type="submit" class="btn btn-primary px-5 btn-light">追加</button>
+            </div>
+            <!-- <div class = "save-button col-4 text-center">
+              <button type="submit" class="btn btn-primary px-5 btn-light">保存</button>
+            </div> -->
+          </div>
+
+
+          
+        </div>
+        </form>
+
+        
+        <!--フッター-->
+        <footer>
+          <div class = "footer-menu">
+            <a href = "#" class = "img-footer">
+              <img class = "logo" src = "{% static 'images/iwate_green.png' %}" alt = "岩手大学">
+            </a>
+            <div class = "footer-icon">
+              <a href = "#"><i class="fa-brands fa-twitter"></i></a>
+              <a href = "#"><i class="fa-brands fa-google"></i></a>
+              <a href = "#"><i class="fa-brands fa-facebook"></i></a>
+              <a href = "#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+
+    </body>
+</html>
+
+
+

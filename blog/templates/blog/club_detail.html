@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.name }} - 国立大学法人 岩手大学</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/w3.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}" type="text/css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="{% static 'css/club-stylesheet.css' %}">
+    <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="w3-sidebar w3-green w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large w3-border-bottom" onclick="w3_close()">Close &times;</button>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-border-bottom">ホームページ</a>
+        <a href="{% url 'index' %}" class="w3-bar-item w3-button w3-border-bottom">サークル一覧</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-border-bottom">ログイン</a>
+        <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-border-bottom">投稿</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-bottom">マイページ</a>
+        <a href="#" class="w3-bar-item w3-button w3-border-bottom">お問い合わせ</a>
+    </div>
+    <!-- Page Content -->
+    <div id="main">
+        <div class="w3-teal w3-dark-grey">
+            <button class="w3-button w3-teal w3-xlarge w3-dark-grey" onclick="w3_open()">☰</button>
+            <!-- whole navbar area, bg-color -->
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#">岩手大学サークル紹介</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active mx-1">
+                            <a class="nav-link" href="{% url 'index' %}">ホーム <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'admin:index' %}">ログイン</a>
+                        </li>
+                        <li class="nav-item mx-1">
+                            <a class="nav-link" href="{% url 'admin:index' %}" target="_blank">追加・編集</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-9" id="Title">
+                    <div class="SNS">
+                        <a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a class="google" href="#"><i class="fa-brands fa-google"></i></a>
+                        <a class="Facebook" href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a class="instagram" href="#"><i class="fa-brands fa-instagram"></i></a>
+                        
+                    </div>
+                    <div class="ClubName">
+                        {{ post.name }}
+                        <!-- <p class = "club-category">({{ post.category }})</p> -->
+                    </div>
+
+                </div>
+                <div class="col-3">
+                    <div class="ClubPicture">
+                        <img src="{{post.image.url}}" alt="Iwate">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-9" id="Content">
+                    <div class="Main">
+                        <table class="Tables">
+                            <tr>
+                                <th>活動場所：</th>
+                                <td>{{post.place}}</td>
+                            </tr>
+                            <tr>
+                                <th>活動時間：</th>
+                                <td>{{post.time}}</td>
+                            </tr>
+                            <tr>
+                                <th>活動内容：</th>
+                                <td>{{post.text}}</td>
+                            </tr>
+                        </table>
+                        <hr>
+                    </div>
+                    <div class="bulletin">
+                        <!-- 輸入框 先宣告submit不回傳 再定義各個欄位form內容 -->
+                        <CAPTION>
+                            <h2><strong>歴史記録</strong></h2>
+                        </CAPTION>
+                        <!-- 表格定義 設定置中 -->
+                        <table width="800px" id='Feedback_table'>
+                            <tr>
+                                <th>留言時間</th>
+                                <th>名前</th>
+                                <th>メール</th>
+                                <th>內容</th>
+                                <th>消去</th>
+                            </tr>
+                        </table>
+                        <hr>
+                        <form action="" method="post" onsubmit="return false;">
+                            <INPUT TYPE="text" id="username" name="username" value="" placeholder="名前" class="BG-Copy"
+                                size="30" />
+                            <INPUT TYPE="text" id="useremail" name="useremail" value="" placeholder="email"
+                                class="BG-Copy" size="30" />
+                            <TEXTAREA NAME="feedback" id="feedback" ROWS="8" COLS="80" placeholder="內容"
+                                class="BG-Copy" style="border:2px #2f3944 solid;"></TEXTAREA>
+                            <INPUT TYPE="submit" VALUE="提出" class="Base" style='text-align:"right"'
+                                onclick='processFormData();addMsg()'>
+                        </form> 
+                    </div>
+                </div>
+                <div class="col-3" id="Content">
+                    <br>
+                    <div class="Basic">
+                        <table>
+                            <caption>基本情報</caption>
+                            <tr>
+                                <th><img src="{% static 'images/1.png' %}"></i></th>
+                                <td>部員数：</th>
+                                <td>{{post.num}}</td>
+                            </tr>
+                            <tr>
+                                <th><img src="{% static 'images/2.png' %}"></i></th>
+                                <td>男女比：</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th><img src="{% static 'images/3.png' %}"></i></th>
+                                <td>国際分布：</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <th><img src="{% static 'images/4.png' %}"></i></th>
+                                <td>会費：</td>
+                                <td>¥{{post.money}}</td>
+                                <!-- <br>本番参加費500円 -->
+                            </tr>
+                        </table>
+                    </div>
+                    <br>
+                    <div class="Picture">
+                        <table>
+                            <caption>写真</caption>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottombar">
+        <a href="#top" id="scrolltop" style="margin-top: 8px">TOP</a>
+    </div>
+    <script>
+        function w3_open() {
+            document.getElementById("main").style.marginLeft = "25%";
+            document.getElementById("mySidebar").style.width = "25%";
+            document.getElementById("mySidebar").style.display = "block";
+            document.getElementById("openNav").style.display = 'none';
+        }
+        function w3_close() {
+            document.getElementById("main").style.marginLeft = "0%";
+            document.getElementById("mySidebar").style.display = "none";
+            document.getElementById("openNav").style.display = "inline-block";
+        }
+    </script>
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+    <script src="{% static 'js/index.js' %}"></script>
+</body>
+
+</html>

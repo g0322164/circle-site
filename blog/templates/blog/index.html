@@ -1,0 +1,356 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "ja">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/my-stylesheet.css' %}">
+        <link href="https://use.fontawesome.com/releases/v6.2.1/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+        <title>岩手大学サークル紹介</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src = "{% static 'js/my-script.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+
+    <body>
+      <div id = "home">
+        <!--ヘッダー部分-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">岩手大学サークル紹介</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active mx-1">
+                  <a class="nav-link" href="">ホーム <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mx-1">
+                  <a class="nav-link" href="{% url 'admin:index' %}">ログイン</a>
+                </li>
+                <li class="nav-item mx-1">
+                  <a class="nav-link" href="{% url 'admin:index' %}" target = "_blank">追加・編集</a>
+                </li>
+                <!--ドロップダウン-->
+                <!-- <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    メニュー
+                  </a>
+                  <ul>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <div class="dropdown-divider"></div>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </div>
+                </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">ログイン</a>
+                </li> -->
+              </ul>
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">検索</button>
+              </form>
+            </div>
+          </nav>
+
+        <!--岩手大学ロゴ-->
+
+            <a href = "#" class = "img-header">
+                <img class = "logo" src = "{% static 'images/iwate_green.png' %}" alt = "岩手大学">
+            </a>
+            <!-- <a href = "#" class = "img_header_green">
+                <img class = "green" src = "./images/iwate_green.png" alt = "岩手大学">                
+            </a> -->
+
+          <!--検索欄-->
+          <div class = "search-menu">
+            
+            <!--検索ボタン-->
+            <div class = "search-form">
+              <div class = "open-btn">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </div>
+              <p class = "ja">
+                サークル・同好会紹介
+              </p>
+            </div>
+            <p class = "eng">
+              Introduction of Circle and Club
+            </p>
+          </div>
+
+          <!--検索窓背景-->
+          <div id = "search-wrap">
+            <div class = "close-btn"><span></span><span></span></div>
+            <div class = "search-guide">
+              <p>岩手大学 サークル・同好会紹介</p>
+            </div>
+            <!--検索欄(テキスト入力，検索ボタン)-->
+            <div class = "search-area">
+              <form role = "search" method = "get" action = "{% url 'search_page' %}">
+                <input type = "text" value = "" name = "keyword" id = "search-text" placeholder = "検索">
+                <input type = "submit" id = "searchsubmit" value = "">
+              </form>
+            </div>
+            <div class = "search-category">
+              <a href = "#">カテゴリ</a>
+              <a href = "#">カテゴリ</a>
+              <a href = "#">カテゴリ</a>
+              <a href = "#">カテゴリ</a>
+              <a href = "#">カテゴリ</a>
+
+            </div>
+          </div>
+
+        <!--サークル一覧-->
+          
+          <div class = "circle-arrow">
+            <p>サークル一覧</p>
+            <a href = "#list"><i class="fa-solid fa-circle-arrow-down"></i></a>
+          </div>
+      </div>
+
+      <div id = "list">
+
+        <div class = "home-arrow">
+          <a href = "#home"><i class="fa-solid fa-circle-arrow-up"></i></a>
+        </div>
+        <!--画像のスライドショー-->
+        <ul class = "slider">
+          <li><img src = "{% static 'images/slide1.jpg' %}" alt = "slide1"></li>
+          <li><img src = "{% static 'images/slide2.jpg' %}" alt = "slide2"></li>
+          <li><img src = "{% static 'images/slide3.jpg' %}" alt = "slide3"></li>
+          <li><img src = "{% static 'images/slide4.jpg' %}" alt = "slide4"></li>
+          <li><img src = "{% static 'images/slide5.jpg' %}" alt = "slide5"></li>
+          <li><img src = "{% static 'images/slide6.jpg' %}" alt = "slide6"></li>
+          <li><img src = "{% static 'images/slide7.jpg' %}" alt = "slide7"></li>
+          <li><img src = "{% static 'images/slide8.jpg' %}" alt = "slide8"></li>
+        </ul>
+        <!--検索欄-->
+        <div class = "list-search">
+          <form id = "form" action = "{% url 'search_page' %}" method = "">
+            <input class = "search-box" id = "search-text" name = "keyword" type = "text" placeholder = "検索">
+            <button type = "submit" class = "search-btn">
+              <i class = "fa fa-search"></i>
+            </button>
+          </form>
+        </div>
+        <!--サークル一覧-->
+        <div class = "tab-menu">
+          <input id = "sports" type = "radio" name = "tab-item" checked>
+          <label class = "tab-item" for = "sports">運動</label>
+          <input id = "culture" type = "radio" name = "tab-item">
+          <label class = "tab-item" for = "culture">文化</label>
+          <input id = "club" type = "radio" name = "tab-item">
+          <label class = "tab-item" for = "club">同好会</label>
+
+          <div class = "tab-content" id = "sports-content">
+            <div class = "sports-description">
+              <ul>
+                {% for post in posts %}
+                {% if post.category == '運動系' %}
+                <li>
+                  <a href = "{% url 'club_detail' pk=post.pk %}">
+                  <img src = "{{post.image.url}}" alt = "運動系">
+                  <div class = "description">
+                    <p class = "circle">{{post.name}}</p>
+                    <i class="fa-regular fa-user"></i>
+                    <p class = "num">{{post.num}}人</p>
+                    <!--110文字以内-->
+                    <p class = "comment">{{post.text}}</p>
+                    <div class = "tag">
+                      <p>音楽</p>
+                      <p>室内競技</p>
+                      <p>初心者歓迎</p>
+                    </div>
+                    <div class = "place">
+                      <p>活動場所 : </p>
+                      <p>{{post.place}}</p>
+                    </div>
+                    <div class = "time">
+                      <p class = "time-menu">活動時間 : </p>
+                      <p class = "time">{{post.time}}</p>
+                    </div>
+                  </div>
+                  <div class = "money">
+                    <p class = "money">￥{{post.money}}</p>
+                  </div>
+                  </a>
+                  <!-- <a href = "#"></a> -->
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <!-- <nav aria-label="Page navigation example" class = "sports-pagination">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                <li class="page-item"><a class="page-link active" href="#" >1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+              </ul>
+            </nav> -->
+          </div>
+          <div class = "tab-content" id = "culture-content">
+            <div class = "culture-description">
+              <ul>
+                {% for post in posts %}
+                {% if post.category == '文化系' %}
+                
+                <li>
+                  <a href = "{% url 'club_detail' pk=post.pk %}">
+                  <img src = "{{post.image.url}}" alt = "運動系">
+                  <div class = "description">
+                    <p class = "circle">{{post.name}}</p>
+                    <i class="fa-regular fa-user"></i>
+                    <p class = "num">{{post.num}}人</p>
+                    <!--110文字以内-->
+                    <p class = "comment">{{post.text}}</p>
+                    <div class = "tag">
+                      <p>音楽</p>
+                      <p>室内競技</p>
+                      <p>初心者歓迎</p>
+                    </div>
+                    <div class = "place">
+                      <p>活動場所 : </p>
+                      <p>{{post.place}}</p>
+                    </div>
+                    <div class = "time">
+                      <p class = "time-menu">活動時間 : </p>
+                      <p class = "time">{{post.time}}</p>
+                    </div>
+                  </div>
+                  <div class = "money">
+                    <p class = "money">￥{{post.money}}</p>
+                  </div>
+                  </a>
+                  <!-- <a href = "#"></a> -->
+                </li>
+                
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <!-- <nav aria-label="Page navigation example" class = "culture-pagination">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                <li class="page-item"><a class="page-link active" href="#" >1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+              </ul>
+            </nav> -->
+          </div>
+          <div class = "tab-content" id = "club-content">
+            <div class = "club-description">
+              <ul>
+                {% for post in posts %}
+                {% if post.category == '同好会' %}
+                <li>
+                  <a href = "{% url 'club_detail' pk=post.pk %}">
+                  <img src = "{{post.image.url}}" alt = "運動系" class = "culture-image">
+                  <div class = "description">
+                    <p class = "circle">{{post.name}}</p>
+                    <i class="fa-regular fa-user"></i>
+                    <p class = "num">{{post.num}}人</p>
+                    <!--110文字以内-->
+                    <p class = "comment">{{post.text}}</p>
+                    <div class = "tag">
+                      <p>音楽</p>
+                      <p>室内競技</p>
+                      <p>初心者歓迎</p>
+                    </div>
+                    <div class = "place">
+                      <p>活動場所 : </p>
+                      <p>{{post.place}}</p>
+                    </div>
+                    <div class = "time">
+                      <p class = "time-menu">活動時間 : </p>
+                      <p class = "time">{{post.time}}</p>
+                    </div>
+                  </div>
+                  <div class = "money">
+                    <p class = "money">￥{{post.money}}</p>
+                  </div>
+                  </a>
+                  <!-- <a href = "#"></a> -->
+                </li>
+                {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+            <!-- <nav aria-label="Page navigation example" class = "club-pagination">
+              <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#">前へ</a></li>
+                <li class="page-item"><a class="page-link active" href="#" >1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">次へ</a></li>
+              </ul>
+            </nav> -->
+          </div>
+        </div>
+
+        <!-- <div class = "tab-menu">
+          <ul class = "tab">
+            <li><a href = "#sports">運動</a></li>
+            <li><a href = "#culture">文化</a></li>
+            <li><a href = "#club">同好会</a></li>
+          </ul>
+
+          <div id = "sports" class = "area">
+            <ul>
+              <li>運動</li>
+              <li>運動</li>
+              <li>運動</li>
+            </ul>
+          </div>
+
+          <div id = "culture" class = "area">
+            <ul>
+              <li>文化</li>
+              <li>文化</li>
+              <li>文化</li>
+            </ul>
+          </div>
+
+          <div id = "club" class = "area">
+            <ul>
+              <li>同好会</li>
+              <li>同好会</li>
+              <li>同好会</li>
+            </ul>
+          </div>
+        </div> -->
+        
+        <!--フッター-->
+        <footer>
+          <div class = "footer-menu">
+            <a href = "#" class = "img-footer">
+              <img class = "logo" src = "{% static 'images/iwate_green.png' %}" alt = "岩手大学">
+            </a>
+            <div class = "footer-icon">
+              <a href = "#"><i class="fa-brands fa-twitter"></i></a>
+              <a href = "#"><i class="fa-brands fa-google"></i></a>
+              <a href = "#"><i class="fa-brands fa-facebook"></i></a>
+              <a href = "#"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </footer>
+      </div>
+
+
+    </body>
+</html>

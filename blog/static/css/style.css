@@ -1,0 +1,94 @@
+/* Become zero */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Whole page */
+.SNS {
+    font-size: 30px;
+    margin-top: 100px;
+    background: #d7e5d9;
+}
+
+.ClubName {
+    font-size: 100px;
+    border-top: solid #000000;
+    border-bottom: solid #000000;
+    border-width: 1px;
+    background: #d7e5d9;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.ClubPicture img {
+    width: 300px;
+    height: 100%;
+}
+
+.Basic {
+    background: #ffffff;
+    font-size: 20px;
+}
+
+.Basic img {
+    width: 20px;
+    height: 100%;
+}
+
+.Main {
+    font-size: 20px;
+}
+
+.Picture {
+    background: #ffffff;
+    font-size: 20px;
+}
+
+/* Bulletin */
+.Base {
+    width: 150px;
+    height: 50px;
+    margin: 10px 0 10px 500px;
+    padding: 10px 35px 10px 35px;
+    border-radius: 2px;
+    box-shadow: 2px 2px 0 0 rgba(157, 139, 127, 0.25);
+    background-color: #c20c8bde;
+    color: white;
+    ;
+}
+
+.BG-Copy {
+    margin: 10px 40px 10px 10px;
+    padding: 10px 5px 10px 5px;
+    border-color: #2f3944;
+}
+
+table {
+    border: 2px solid #2f3944;
+    font-family: 微軟正黑體;
+    font-size: 16px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th {
+    background-color: #bfc20cde;
+    border: 1px solid #2f3944;
+    color: #fff;
+}
+
+td {
+    border: 1px solid #2f3944;
+}
+
+tr {
+    height: 60px;
+}
+
+/* top */
+bottombar {
+    /* margin-bottom: auto; */
+    margin-right: 0px;
+}
