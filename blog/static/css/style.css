@@ -54,7 +54,7 @@
     padding: 10px 35px 10px 35px;
     border-radius: 2px;
     box-shadow: 2px 2px 0 0 rgba(157, 139, 127, 0.25);
-    background-color: #c20c8bde;
+    background-color: #231815;
     color: white;
     ;
 }
@@ -74,7 +74,7 @@ table {
 }
 
 th {
-    background-color: #bfc20cde;
+    background-color: #1f6d2b;
     border: 1px solid #2f3944;
     color: #fff;
 }
