@@ -128,14 +128,16 @@
         </div>
         <!--画像のスライドショー-->
         <ul class = "slider">
-          <li><img src = "{% static 'images/slide1.jpg' %}" alt = "slide1"></li>
-          <li><img src = "{% static 'images/slide2.jpg' %}" alt = "slide2"></li>
+          {% for post in posts %}
+          <li><img src = "{{post.image.url}}" alt = "slide1"></li>
+          {% endfor %}
+          <!-- <li><img src = "{% static 'images/slide2.jpg' %}" alt = "slide2"></li>
           <li><img src = "{% static 'images/slide3.jpg' %}" alt = "slide3"></li>
           <li><img src = "{% static 'images/slide4.jpg' %}" alt = "slide4"></li>
           <li><img src = "{% static 'images/slide5.jpg' %}" alt = "slide5"></li>
           <li><img src = "{% static 'images/slide6.jpg' %}" alt = "slide6"></li>
           <li><img src = "{% static 'images/slide7.jpg' %}" alt = "slide7"></li>
-          <li><img src = "{% static 'images/slide8.jpg' %}" alt = "slide8"></li>
+          <li><img src = "{% static 'images/slide8.jpg' %}" alt = "slide8"></li> -->
         </ul>
         <!--検索欄-->
         <div class = "list-search">
